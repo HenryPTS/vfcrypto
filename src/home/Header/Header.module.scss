@@ -1,0 +1,25 @@
+.header {
+  height: 70px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 320px;
+}
+.rightContainer {
+  display: flex;
+  .lastUpdate {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    .label,.time {
+      display: inline-block;
+      font-size: 0.67em;
+    }
+    .time {
+      display: inline-block;
+      color: #b5b1bd;
+      margin-left: 3px;
+    }
+  }  
+}

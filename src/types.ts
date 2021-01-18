@@ -1,0 +1,1 @@
+export type Tsym = 'GBP' | 'USD' | 'EUR' | 'JPY' | 'KRW'

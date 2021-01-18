@@ -11,6 +11,8 @@ export interface SelectProps extends HTMLAttributes<HTMLElement> {
   valueSelected: string
 }
 
+// Simple stateless dropdown selector
+
 const Select: FC<SelectProps> = ({
   options,
   isOpen,

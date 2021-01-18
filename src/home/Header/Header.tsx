@@ -48,8 +48,8 @@ const Header: FC<HeaderProps> = ({ onSelectTsym, tsym, lastUpdate }) => {
       />
       {lastUpdate ? (
         <div className={styles.lastUpdate}>
-        <h4 className={styles.label}>Last update:</h4>
-        <h4 className={styles.time}>{new Date(lastUpdate).toLocaleTimeString()}</h4>
+          <h4 className={styles.label}>Last update:</h4>
+          <h4 className={styles.time}>{new Date(lastUpdate).toLocaleTimeString()}</h4>
         </div>) : ''}
       </div>
     </header>

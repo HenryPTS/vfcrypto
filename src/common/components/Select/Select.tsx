@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
+import React, { FC, HTMLAttributes } from 'react'
 import styles from './Select.module.scss'
 import InnerAbsolute from './styled/InnerAbsolute'
 import SvgArrow from './styled/SvgArrow'
 
-export interface SelectProps {
+export interface SelectProps extends HTMLAttributes<HTMLElement> {
   options: string[],
   onOpen?: () => void
   onSelect: (s: any) => void

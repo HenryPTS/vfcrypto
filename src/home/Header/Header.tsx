@@ -4,6 +4,7 @@ import { Tsym } from "types";
 import styles from "./Header.module.scss";
 import Select from "common/components/Select/Select";
 import CurrencyInfo from "./components/CurrencyInfo/CurrencyInfo";
+import useMouseDown from "common/hooks/useMouseDown";
 
 export interface HeaderProps {
   onSelectTsym: (s: any) => void
@@ -13,6 +14,19 @@ export interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ onSelectTsym, tsym, lastUpdate }) => {
   const [filterOpen, setFilterOpen] = useState(false);
+  // closes the filter if clicked outside
+  const closeFilter = (ev: MouseEvent, isFilterOpen: boolean, clearFilters: () => void) => {
+    const eventTargets = ev.composedPath() as Element[];
+    const outsideClick = !eventTargets.some(
+      (target) =>
+        typeof target.id === "string" &&
+        target.id === "selectTsym"
+    );
+    if (outsideClick && isFilterOpen) clearFilters();
+  }
+  useMouseDown((ev) => closeFilter(ev, filterOpen, () => setFilterOpen(false)), [filterOpen])
+
+
   return (
     <header className={styles.header}>
       <Switch>
@@ -25,6 +39,7 @@ const Header: FC<HeaderProps> = ({ onSelectTsym, tsym, lastUpdate }) => {
       </Switch>
       <div className={styles.rightContainer}>
       <Select
+        id="selectTsym"
         onSelect={(s: any) => onSelectTsym(s)}
         valueSelected={tsym}
         isOpen={filterOpen}

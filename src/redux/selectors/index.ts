@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import { TableDatum } from 'common/components/CoinTable/CoinTable'
 import { RootState } from '../createStore'
-import { pick } from 'lodash'
+import pick from 'lodash/pick'
 
 // This selects data for all currencies for use by CoinTable
 export const getCoinTableData = createSelector(

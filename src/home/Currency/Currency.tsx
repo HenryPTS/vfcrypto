@@ -36,10 +36,10 @@ const Currency: FC<CurrencyProps> = ({
         </div>
         <div className={styles.circle}>{data.rank}</div>
       </div>
-      <Card header="Market Cap" text={data.marketCap} size="small" />
-      <Card header="Volume (24h)" text={data.volume24Hour} size="small" />
-      <Card header="Price" text={`${data.high24Hour}`} size="small" />
-      <Card header="Price" text={`${data.high24Hour}`} size="small" />
+      <Card header="Market Cap" text={data.marketCap} />
+      <Card header="Volume (24h)" text={data.volume24Hour} />
+      <Card header="Price" text={`${data.high24Hour}`} />
+      <Card header="Price" text={`${data.high24Hour}`} />
     </div>
   </div>
 )
@@ -50,6 +50,8 @@ const CurrencyContainer = () => {
   const currencyData = useSelector((state: RootState) => getCurrencyData(state, params.currency))
   if (!isEmpty(currencyData)) return <Currency data={currencyData as CurrencyData} />
   if (isEmpty(currencyData) && status.loading) return <LoadingSpinnerSvg />
+  // if data object for currency is empty and no data is loading
+  // then params.currency is invalid currency, so redirect to dash
   return <Redirect to="/" />
 }
 

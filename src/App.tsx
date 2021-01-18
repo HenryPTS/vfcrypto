@@ -12,14 +12,17 @@ import useInterval from 'common/hooks/useInterval';
  
 function App() {
   const status = useSelector(getTopListStatus)
+  // status.tsym holds the chosen currency
   const [tsym, setTsym] = useState(status.tsym)
   const dispatch = useDispatch()
+  // Fetched top ten coins by market cap on load, on change of tsym, and every 60 seconds
   useEffect(() => {
     dispatch(fetchToplistByMarketCap(tsym))
   }, [tsym])
   useInterval(() => {
     dispatch(fetchToplistByMarketCap(tsym))
   }, 60 * 1000)
+  
   return (
     <div className="App">
       <Header tsym={tsym} lastUpdate={status.lastUpdate} onSelectTsym={setTsym}/>
@@ -28,6 +31,7 @@ function App() {
           <Dashboard />
         </Route>
         <Route path="/:currency" exact>
+          {/* Container outside of currency component to avoid background flickering during loads */}
           <div className={styles.currencyOuterContainer}>
             <Currency />
           </div>

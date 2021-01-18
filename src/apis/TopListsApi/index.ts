@@ -14,13 +14,4 @@ export abstract class TopListApi {
     return res.data.Data as IToplistData.Datum[]
   }
 
-  public static async getToplistBy24hVolume(tsym: Tsym) {
-    const url = HttpService.generateUrl(
-      '/data/top/totalvolfull',
-      { tsym }
-    )
-    const res = await axios.get<IToplistData.Response>(url.toString())
-    return res.data.Data as IToplistData.Datum[]
-  }
-  
 }

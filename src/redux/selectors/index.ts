@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
 import { TableDatum } from 'common/components/CoinTable/CoinTable'
 import { RootState } from '../createStore'
-import { Tsym } from 'types'
 import { pick } from 'lodash'
 
+// This selects data for all currencies for use by CoinTable
 export const getCoinTableData = createSelector(
   (state: RootState) => ({coins: state.topList.coins, tsym: state.topList.tsym}),
   ({coins, tsym}) =>  coins.reduce<TableDatum[]>(
@@ -19,6 +19,7 @@ export const getCoinTableData = createSelector(
     )
 )
 
+// This selects data for specific currency to be used by Currency
 export const getCurrencyData = createSelector(
   (state: RootState, currency: string) => (
     {
@@ -39,6 +40,7 @@ export const getCurrencyData = createSelector(
     })
 )
 
+// Provides metadata of given currency, used by CurrencyInfo
 export const getCurrencyMetadata = createSelector(
   (state: RootState, currency: string) => ({currency: state.topList.coins.find(c => c.CoinInfo.Name === currency), tsym: state.topList.tsym}),
   ({ currency,tsym }) => !currency ? {} : ({
@@ -51,7 +53,8 @@ export const getCurrencyMetadata = createSelector(
     })
 )
 
-
+// selects side-wide data. Which currency is selected, is the page loading,
+// when was the last update
 export const getTopListStatus = createSelector(
   (state: RootState) => state.topList,
   topList => pick(topList, ['tsym', 'loading', 'lastUpdate'])

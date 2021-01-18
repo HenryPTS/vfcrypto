@@ -48,6 +48,7 @@ const CoinTable: FC<CoinTableProps> = ({
             {datum.changePct24Hour}
           </td>
           <td className={styles.spacer} />
+          {/* Positioning trick puts Link above td elements w/o disrupting table layout */}
           <Link to={`/${datum.name}`} style={{position: 'absolute', left:0, right:0, height: "inherit"}} />
         </tr>
       ))}

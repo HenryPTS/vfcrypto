@@ -39,9 +39,13 @@ export const {
 } = topList.actions
 
 export const fetchToplistByMarketCap = (tsym: Tsym): AppThunk => async (dispatch) => {
-  dispatch(fetchListStart(tsym))
-  const coins = await TopListApi.getToplistByMarketCap(tsym)
-  dispatch(fetchListSucccess(coins))
+  try {
+    dispatch(fetchListStart(tsym))
+    const coins = await TopListApi.getToplistByMarketCap(tsym)
+    dispatch(fetchListSucccess(coins))
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 export default topList.reducer

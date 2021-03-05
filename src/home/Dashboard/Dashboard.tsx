@@ -12,7 +12,7 @@ export const Dashboard: FC<DashboardProps> = ({
   data,
 }) => {
   return (
-  <div>
+  <div style={{ marginTop: '30px' }}>
     <CoinTable data={data}/>
   </div>
 )

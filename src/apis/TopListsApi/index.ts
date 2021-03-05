@@ -1,10 +1,9 @@
 import axios from "axios";
 import HttpService from "../../services/HttpService";
 import { Tsym } from "../../types";
-import { IToplistData } from "./TopListsApi.types";
+import { IHistoricalDataPairData, IToplistData } from "./TopListsApi.types";
 
 export abstract class TopListApi {
-
   public static async getToplistByMarketCap(tsym: Tsym) {
     const url = HttpService.generateUrl(
       '/data/top/mktcapfull',
@@ -14,4 +13,13 @@ export abstract class TopListApi {
     return res.data.Data as IToplistData.Datum[]
   }
 
+  public static async getDailyHistoricalDataPair(tsym: Tsym, fsym: string) {
+    const url = HttpService.generateUrl(
+      '/data/v2/histoday',
+      { tsym, fsym }
+    )
+    const res = await axios.get<IHistoricalDataPairData.Response>(url.toString())
+    console.log({res})
+    return res.data.Data.Data as IHistoricalDataPairData.Datum[]
+  }
 }

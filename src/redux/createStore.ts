@@ -2,10 +2,12 @@
 import { Action, combineReducers, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 import ReduxThunk, { ThunkAction } from 'redux-thunk'
-import topList from "./slices/topList.slice";
+import topList from "./slices/topList.slice"
+import historicalData from './slices/historicalData.slice'
 
 const rootReducer = combineReducers({
-  topList
+  topList,
+  historicalData
 });
 
 const middleware = [...getDefaultMiddleware(), ReduxThunk];

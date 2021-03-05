@@ -19,9 +19,9 @@ function App() {
   useEffect(() => {
     dispatch(fetchToplistByMarketCap(tsym))
   }, [tsym])
-  useInterval(() => {
-    dispatch(fetchToplistByMarketCap(tsym))
-  }, 60 * 1000)
+  // useInterval(() => {
+  //   dispatch(fetchToplistByMarketCap(tsym))
+  // }, 60 * 1000)
   
   return (
     <div className="App">

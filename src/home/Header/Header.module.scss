@@ -1,10 +1,20 @@
+@import 'src/assets/styles/colors.scss';
+
 .header {
-  height: 70px;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 320px;
+  width: 100%;
+  box-shadow: $slateblue 0px 1px 7px 1px;
+  .innerContainer {
+    height: 70px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    max-width: 1264px;
+  }
+  .title {
+    color: $slateblue;
+  }
 }
 .rightContainer {
   display: flex;
@@ -12,13 +22,16 @@
     margin-left: 10px;
     display: flex;
     align-items: center;
+    color: $mutedblue;
+
     .label,.time {
       display: inline-block;
       font-size: 0.67em;
+      color: $mutedblue;
     }
     .time {
       display: inline-block;
-      color: #b5b1bd;
+      color: $slateblue;
       margin-left: 3px;
     }
   }  

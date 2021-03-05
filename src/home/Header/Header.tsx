@@ -29,28 +29,30 @@ const Header: FC<HeaderProps> = ({ onSelectTsym, tsym, lastUpdate }) => {
 
   return (
     <header className={styles.header}>
-      <Switch>
-        <Route path="/" exact>
-          <h2>VFCrypto</h2>
-        </Route>
-        <Route path="/:currency" exact>
-          <CurrencyInfo />
-        </Route>
-      </Switch>
-      <div className={styles.rightContainer}>
-      <Select
-        id="selectTsym"
-        onSelect={(s: any) => onSelectTsym(s)}
-        valueSelected={tsym}
-        isOpen={filterOpen}
-        onOpen={() => setFilterOpen((open) => !open)}
-        options={["GBP", "USD", "EUR", "JPY", "KRW"]}
-      />
-      {lastUpdate ? (
-        <div className={styles.lastUpdate}>
-          <h4 className={styles.label}>Last update:</h4>
-          <h4 className={styles.time}>{new Date(lastUpdate).toLocaleTimeString()}</h4>
-        </div>) : ''}
+      <div className={styles.innerContainer}>
+        <Switch>
+          <Route path="/" exact>
+            <h2 className={styles.title}>VFCrypto</h2>
+          </Route>
+          <Route path="/:currency" exact>
+            <CurrencyInfo />
+          </Route>
+        </Switch>
+        <div className={styles.rightContainer}>
+        <Select
+          id="selectTsym"
+          onSelect={(s: any) => onSelectTsym(s)}
+          valueSelected={tsym}
+          isOpen={filterOpen}
+          onOpen={() => setFilterOpen((open) => !open)}
+          options={["GBP", "USD", "EUR", "JPY", "KRW"]}
+        />
+        {lastUpdate ? (
+          <div className={styles.lastUpdate}>
+            <h4 className={styles.label}>Last update:</h4>
+            <h4 className={styles.time}>{new Date(lastUpdate).toLocaleTimeString()}</h4>
+          </div>) : ''}
+        </div>
       </div>
     </header>
   );

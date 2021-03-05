@@ -59,3 +59,8 @@ export const getTopListStatus = createSelector(
   (state: RootState) => state.topList,
   topList => pick(topList, ['tsym', 'loading', 'lastUpdate'])
 )
+
+export const selectHistoricalData = createSelector(
+  (state: RootState) => state.historicalData,
+  historicalData => historicalData
+)
